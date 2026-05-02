@@ -1,10 +1,14 @@
+const ffmpegPath = require('ffmpeg-static');
 const ffmpeg = require('fluent-ffmpeg');
+ffmpeg.setFfmpegPath(ffmpegPath);
 const path = require('path');
 const fs = require('fs');
 const { v4: uuidv4 } = require('uuid');
 
 // In-memory store — no database needed
 const store = new Map();
+
+
 
 function calcBitrate(targetMB, durationSec) {
   const targetBits = targetMB * 8 * 1024 * 1024;
